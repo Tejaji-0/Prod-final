@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import { GameState, Player } from './types';
 import { questionPackage } from './data';
@@ -315,7 +315,7 @@ function App() {
     return gameState.playedQuestions.size >= totalQuestions;
   };
 
-  const transitionToNextPhase = () => {
+  const transitionToNextPhase = useCallback(() => {
     if (gameState.phase === 'round1' && checkRoundEnd()) {
       setGameState(prev => ({ ...prev, phase: 'round1-transition' }));
     } else if (gameState.phase === 'round2' && checkRoundEnd()) {
@@ -326,11 +326,11 @@ function App() {
         setGameState(prev => ({ ...prev, phase: 'results' }));
       }
     }
-  };
+  }, [gameState.phase, gameState.currentRound, gameState.playedQuestions, gameState.players]);
 
   useEffect(() => {
     transitionToNextPhase();
-  }, [gameState.playedQuestions.size]);
+  }, [transitionToNextPhase]);
 
   const startFinalRound = () => {
     setGameState(prev => ({ ...prev, phase: 'final' }));
@@ -810,7 +810,7 @@ function App() {
                   className="btn"
                   onClick={() => {
                     const bid = parseInt(answer);
-                    if (bid >= currentBid && bid <= player.score) {
+                    if (bid > currentBid && bid <= player.score) {
                       placeBid(index, bid);
                       setAnswer('');
                     }
