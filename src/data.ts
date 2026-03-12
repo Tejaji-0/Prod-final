@@ -27,7 +27,7 @@ export const questionPackage: QuestionPackage = {
       questions: [
         { id: 'r1-t3-100', topic: 'Memes', value: 100, text: 'What animal is featured in the "Doge" meme?', answer: 'Shiba Inu', type: 'regular' },
         { id: 'r1-t3-200', topic: 'Memes', value: 200, text: 'Which meme features a green frog?', answer: 'Pepe', type: 'regular' },
-        { id: 'r1-t3-300', topic: 'Memes', value: 300, text: 'What is the name of the distracted boyfriend meme girl?', answer: 'Woman in red', type: 'regular' },
+        { id: 'r1-t3-300', topic: 'Memes', value: 300, text: 'In the "distracted boyfriend" meme, what color dress is the woman walking past wearing?', answer: 'Red', type: 'regular' },
         { id: 'r1-t3-400', topic: 'Memes', value: 400, text: 'Which meme involves a muscular dog?', answer: 'Swole Doge', type: 'regular' },
         { id: 'r1-t3-500', topic: 'Memes', value: 500, text: 'What year did the "Rickroll" meme become popular?', answer: '2007', type: 'cat' },
       ],
